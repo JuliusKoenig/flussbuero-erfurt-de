@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="{{ settings.website_language }}">
 
 <head>
     {# Add title and slogan #}
@@ -28,17 +28,7 @@
     <link rel="stylesheet" href="{{ css }}">
     {% endfor %}
 </head>
-<body>
-<div class="page">
-    {% include 'components/header.html.jinja2' %}
-    {% block body %}
-        <div class="page-wrapper">
-            <div class="page-body">
-                {% block content required %}{% endblock %}
-            </div>
-        </div>
-    {% endblock %}
-    {% include 'components/footer.html.jinja2' %}
-</div>
+<body {% if theme_mode == "dark" %} class="theme-dark" {% endif %}>
+{% block body required %}{% endblock %}
 </body>
 </html>

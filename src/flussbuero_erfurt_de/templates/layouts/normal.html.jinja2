@@ -1,0 +1,12 @@
+{% extends "base.html.jinja2" %}
+{% block body %}
+    <div class="page">
+        {% include 'components/header.html.jinja2' %}
+        <div class="page-wrapper">
+            <div class="page-body">
+                {% block content required %}{% endblock %}
+            </div>
+        </div>
+        {% include 'components/footer.html.jinja2' %}
+    </div>
+{% endblock %}

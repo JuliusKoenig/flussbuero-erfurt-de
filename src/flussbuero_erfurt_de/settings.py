@@ -1,3 +1,5 @@
+from typing import Literal
+
 from wiederverwendbar.pydantic.singleton import ModelSingleton
 from wiederverwendbar.logger import LoggerSettings
 
@@ -66,10 +68,12 @@ class Settings(LoggerSettings, metaclass=ModelSingleton):
         "Weser",
         "bautechnische Gesamtplanung",
     ]
+    website_default_theme_mode: Literal["light", "dark"] = "light"
     website_charset: str = "utf-8"
     website_language: str = "de"
     website_viewport: str = "width=device-width, initial-scale=1, shrink-to-fit=no"
     website_theme_color: str = "#11679a"
+    website_home_page: str = "/home"
     website_template_path: str = "templates"
     website_statics_path: str = "statics"
     website_statics_web_path: str = "/statics"
