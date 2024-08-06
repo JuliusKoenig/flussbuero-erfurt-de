@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    {# Add title and slogan #}
+    <title>{{ settings.website_title }} | {{ settings.website_slogan }}</title>
+    {# Add meta tags #}
+    <meta charset="{{ settings.website_charset }}">
+    <meta name="viewport" content="{{ settings.website_viewport }}">
+    <meta name="description" content="{{ settings.website_slogan }}">
+    <meta name="keywords" content="{% for keyword in settings.website_keywords %}{{ keyword }}{% if not loop.last %}, {% endif %}{% endfor %}">
+    <meta name="author" content="{{ settings.website_author }}">
+    <meta name="language" content="{{ settings.website_language }}">
+    <meta name="robots" content="{{ settings.website_robots }}">
+    <meta name="generator" content="{{ settings.website_generator }}">
+    <meta name="theme-color" content="{{ settings.website_theme_color }}">
+
+    {# Add favicons #}
+    <link rel="icon" type="image/png" href="{{ settings.get_img_web_path('logo_short.png') }}"> {# ToDo: convert to small img #}
+
+    {# Add web paths to JS files #}
+    {% for js in settings.website_js_web_paths %}
+    <script type="application/javascript" src="{{ js }}"></script>
+    {% endfor %}
+
+    {# Add web paths to CSS files #}
+    {% for css in settings.website_css_web_paths %}
+    <link rel="stylesheet" href="{{ css }}">
+    {% endfor %}
+</head>
+<body>
+<div class="page">
+    {% include 'components/header.html.jinja2' %}
+    {% block body %}
+        <div class="page-wrapper">
+            <div class="page-body">
+                {% block content required %}{% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+    {% include 'components/footer.html.jinja2' %}
+</div>
+</body>
+</html>
